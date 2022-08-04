@@ -1,0 +1,172 @@
+.fiction__chapter {
+  margin: auto;
+  padding: 10px;
+  width: 100%;
+}
+
+.fiction__chapter .fiction__chapter__header {
+  display: block;
+  position: fixed;
+  top: 1%;
+  left: 25%;
+  width: 50%;
+  height: 40%;
+  border-radius: 20px 20px 0 0;
+  background-color: black;
+  white-space: wrap;
+  z-index: 11;
+}
+
+.fiction__chapter .fiction__chapter__header .fiction__chapter__cover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 250px;
+}
+
+.fiction__chapter .fiction__chapter__header .fiction__chapter__cover img {
+  height: 200px;
+  -webkit-box-shadow: 13px 0.3px 5px #e0cfcff3;
+          box-shadow: 13px 0.3px 5px #e0cfcff3;
+  -webkit-transform: rotateY(28deg);
+          transform: rotateY(28deg);
+}
+
+.fiction__chapter .fiction__chapter__header .fiction__chapter__body {
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  padding: auto;
+}
+
+.fiction__chapter .fiction__chapter__header .fiction__chapter__body h3 {
+  font-size: 1rem;
+  position: relative;
+  top: -15%;
+  letter-spacing: 10px;
+  padding: 5px;
+}
+
+.fiction__chapter .fiction__chapter__header .fiction__chapter__body h4 {
+  position: relative;
+  top: -13%;
+  color: #9b9393;
+  padding: 5px;
+  font-size: 10px;
+}
+
+.fiction__chapter .fiction__chapter__header .fiction__chapter__body p {
+  width: 90%;
+  color: gray;
+  text-align: left;
+  font-size: 13px;
+  padding: 5px;
+}
+
+.fiction__chapter ul {
+  display: -ms-inline-grid;
+  display: inline-grid;
+  -ms-grid-columns: auto auto auto auto;
+      grid-template-columns: auto auto auto auto;
+  grid-auto-flow: row;
+  -webkit-column-gap: 5px;
+          column-gap: 5px;
+  padding: 10px;
+  font-size: 18px;
+  list-style: none;
+  position: absolute;
+  top: 40%;
+}
+
+.fiction__chapter ul li {
+  border-bottom: 1px solid #ff7b00;
+  padding: 10px;
+  text-align: center;
+  width: auto;
+}
+
+.fiction__chapter ul li:nth-child(even) {
+  border-bottom: 1px solid #0a94f0;
+}
+
+.fiction__chapter ul li:hover {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-transition: .6s;
+  transition: .6s;
+}
+
+.fiction__chapter button {
+  color: rgba(226, 147, 28, 0.671);
+  background-color: transparent;
+  position: fixed;
+  top: 1%;
+  border: 1px solid black;
+  border-radius: 50% 50%;
+  font-size: 2rem;
+  z-index: 111;
+}
+
+@media all and (max-device-width: 1367px) {
+  .fiction__chapter .fiction__chapter__header {
+    height: 30%;
+    white-space: wrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .fiction__chapter .fiction__chapter__header .fiction__chapter__cover {
+    height: 150px;
+  }
+  .fiction__chapter .fiction__chapter__header .fiction__chapter__cover img {
+    height: 150px;
+  }
+  .fiction__chapter .fiction__chapter__header .fiction__chapter__body p {
+    font-size: 5px;
+  }
+  .fiction__chapter ul {
+    top: 42%;
+  }
+}
+
+@media all and (max-device-width: 400px) {
+  .fiction__chapter .fiction__chapter__header {
+    width: 80%;
+    left: 10%;
+  }
+  .fiction__chapter .fiction__chapter__header .fiction__chapter__body {
+    padding-top: 20px;
+  }
+  .fiction__chapter .fiction__chapter__header .fiction__chapter__body h3 {
+    letter-spacing: 5px;
+    font-size: 10px;
+  }
+  .fiction__chapter .fiction__chapter__header .fiction__chapter__body p {
+    display: none;
+  }
+  .fiction__chapter ul {
+    font-size: 10px;
+    padding: 0px;
+  }
+  .fiction__chapter ul li {
+    padding: 0;
+  }
+}
+/*# sourceMappingURL=BooksChapters.css.map */

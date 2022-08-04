@@ -1,0 +1,109 @@
+.section__two{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    h1{
+        display: flex;
+        font-size: 2rem;
+        margin: 2rem 0rem;
+    }
+    div.card__list{
+        display: flex;
+        width: 90%;
+        flex-wrap: wrap;
+        div.result__card{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            padding: 10px;
+            flex: 1 1 300px;
+            border-top: 1px solid white;
+            border-bottom: 1px solid white;
+            border-radius: 20px;
+            margin: 1rem;
+            transition: .6s;
+            
+            img{
+                height: 250px;
+                transition: .6s;
+                
+               &:hover{
+                
+                box-shadow:  
+                13px 0.3px 5px #e0cfcff3;
+                transform: rotateY(28deg);
+               }
+            }
+            &:hover{
+                -moz-box-shadow:2px 10px 10px #333333; -webkit-box-shadow:2px 10px 10px #333333; box-shadow:2px 10px 10px #333333;
+                
+            }
+        }
+       
+        div.result__detail{
+            color: white;
+            white-space: wrap;
+            letter-spacing: 2px;
+            h3{
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+            p{
+                display: none;
+            }
+            h4{
+                color: gray;
+            }
+            
+        }
+    }
+}
+@media all and (max-device-width:1367px){
+    .section__two{
+        height: auto;
+        div.card__list{
+        div.result__card{
+            flex: 1 1 120px;
+            .result__cover{
+                img{
+                    height: 200px;
+                    box-shadow:  
+                10px 0.3px 5px #e0cfcff3;
+                transform: rotateY(28deg);
+                }
+            }
+            .result__detail{
+                h3{
+                    font-size: 13px;
+                }
+                h4{
+                    font-size: 5px;
+                }
+            }
+           
+        }
+       
+    }
+     }
+}
+
+
+@media all and (max-device-width:400px){
+    .section__two{
+        div.result__card{    
+            img{
+                height: 150px;
+                transition: .6s;
+                box-shadow:  
+                13px 0.3px 5px #e0cfcff3;
+                transform: rotateY(28deg);
+               
+            }
+           
+        }
+        
+    }
+
+}

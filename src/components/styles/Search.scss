@@ -1,0 +1,108 @@
+.search__section{
+    background-image: url('../../images/greg-rakozy-oMpAz-DN-9I-unsplash.jpg');
+    height: 100vh;
+    animation-name: move;
+    animation-duration: 60s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    background-size: cover;
+   
+    div.form__background{
+       
+        width: 410px;
+        height: 10px;
+        position: relative;
+        top: 5.5%;
+        z-index: 0;
+        overflow: hidden;
+        padding: 1.5rem;
+        z-index: 0;
+        border-radius: 10px;
+        &::after,&::before{
+            box-sizing: border-box;
+        }
+        &::before{
+            content: "";
+            position: absolute;
+            
+            left: -50%;
+            top: 22%;
+            width: 200%;
+            height: 55%;
+            z-index: -2;
+            background-repeat: no-repeat;
+            //background-size: 50% 50%;
+            //background-position: 0 0,100% 0,100% 100%,0 100%;
+            // background-image: linear-gradient(#ffb36c,#ffb36c),
+            // linear-gradient(#eb5baa,#eb5baa),
+            // linear-gradient(#27e97e,#27e97e),
+            // linear-gradient(#5bebf5,#5bebf5);
+            background-color: rgb(255,115,0);
+            background-position: 0 0;
+            background-image: linear-gradient(90deg, rgba(255,115,0,0.9556197478991597) 0%, rgba(255,125,191,1) 50%, rgba(56,224,244,1) 100%);
+            
+            animation: rotate 5s linear infinite;
+            @keyframes rotate{
+                100%{
+                    transform: rotate(1turn);
+                }
+            }
+        }
+        &::after{
+            content:'';
+            
+            position: absolute;
+            z-index: -1;
+            left: calc(12px/2);
+            top:calc(12px/2);
+            width:calc(100%-12px);
+            height: calc(100%-12px);
+            background-color: white;
+            border-radius: 5px;
+            animation: opacityChange 5s linear infinite;
+        }
+        @keyframes opacityChange {
+            50%{
+                opacity: 1;
+            }100%{
+                opacity: .5;
+            }
+        }
+    }
+
+    input{
+
+        width: 405px;
+        height: 40.45px;
+        border: 1px solid transparent;
+        border-radius: 10px ;
+        position: relative;
+        
+        }
+}
+
+@keyframes move {
+    0% {
+        background-position: 0% 0% ；
+    }
+    100% {
+        background-position: bottom right;
+    }
+}
+@media all and (max-device-width:1367px){
+    .form__background{
+        display: none;
+    }
+}
+@media all and (max-device-width:400px){
+    .search__section{
+     
+       background-position: 50%;
+       animation: none;
+       input{
+        width: 300px;
+        height: 40.45px;
+       }
+    }
+ 
+}
