@@ -178,7 +178,7 @@
   }
 }
 
-@media all and (max-device-width: 400px) {
+@media all and (max-device-width: 600px) {
   .hello .yaya .Card {
     -webkit-box-flex: 1;
         -ms-flex: 1 0 100px;

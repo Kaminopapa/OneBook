@@ -64,7 +64,7 @@
   }
 }
 
-@media all and (max-device-width: 400px) {
+@media all and (max-device-width: 600px) {
   .chapter__wrapper {
     left: 10%;
     width: 80%;

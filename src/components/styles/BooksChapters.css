@@ -146,7 +146,7 @@
   }
 }
 
-@media all and (max-device-width: 400px) {
+@media all and (max-device-width: 600px) {
   .fiction__chapter .fiction__chapter__header {
     width: 80%;
     left: 10%;

@@ -1,4 +1,3 @@
-import { userInfo } from "os";
 import React, { useEffect, useState } from "react";
 import IBook, { Ibooks, IChapters } from "../interfaces/IBook";
 import BookApi from "../services/BookApi";
@@ -91,7 +90,15 @@ const BooksResult = (props: BooksResultProps) => {
     }
     if (!a || a.length === 0) {
       return (
-        <p style={{ color: "#FF425E;" }}>No books,Sorry Refresh Your page</p>
+        <p
+          style={{
+            color: "#FF425E;",
+
+            textAlign: "center",
+          }}
+        >
+          No books,Sorry Refresh Your page
+        </p>
       );
     }
     return (

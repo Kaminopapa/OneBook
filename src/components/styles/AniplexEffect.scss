@@ -270,11 +270,11 @@ transform: rotateY(90deg);
    }
 }
 
-@media all and(max-device-width:400px){
+@media all and(max-device-width:600px){
     .box{
       
         .chars{
-            font-size: 45px;
+            font-size: 44px;
             margin: 0 5px;
         }
         .ll{

@@ -99,23 +99,24 @@
     -webkit-box-flex: 1;
         -ms-flex: 1 1 120px;
             flex: 1 1 120px;
+    margin: 0;
   }
-  .section__two div.card__list div.result__card .result__cover img {
+  .section__two div.card__list div.result__card div.result__cover img {
     height: 200px;
     -webkit-box-shadow: 10px 0.3px 5px #e0cfcff3;
             box-shadow: 10px 0.3px 5px #e0cfcff3;
     -webkit-transform: rotateY(28deg);
             transform: rotateY(28deg);
   }
-  .section__two div.card__list div.result__card .result__detail h3 {
+  .section__two div.card__list div.result__card div.result__detail h3 {
     font-size: 13px;
   }
-  .section__two div.card__list div.result__card .result__detail h4 {
+  .section__two div.card__list div.result__card div.result__detail h4 {
     font-size: 5px;
   }
 }
 
-@media all and (max-device-width: 400px) {
+@media all and (max-device-width: 600px) {
   .section__two div.result__card img {
     height: 150px;
     -webkit-transition: .6s;

@@ -92,7 +92,15 @@ function Recomended(props: BookListProps) {
 
     if (!props.items || props.items.length === 0)
       return (
-        <p style={{ color: "#FF425E;" }}>No books,Sorry Refresh Your page</p>
+        <p
+          style={{
+            color: "#FF425E;",
+
+            textAlign: "center",
+          }}
+        >
+          No books,Sorry Refresh Your page
+        </p>
       );
     return (
       <div className="hello">
