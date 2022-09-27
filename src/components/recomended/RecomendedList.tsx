@@ -32,7 +32,6 @@ const RecomendedList = (props: RecomentProps) => {
             <BsSearch color="yellow" size={"3em"} style={{ margin: "10px" }} />
           </a>
         </button>
-        const newData=data
         <h2>你感兴趣的</h2>
       </div>
       {/* 如果宽度小于1367px 不会有横向scroll */}
