@@ -15,6 +15,7 @@ export default interface IBook {
   cover: string;
   fictionType: string;
   updateTime: string;
+  idLoading: Boolean;
 }
 
 export interface IChaptersData {
@@ -37,4 +38,10 @@ export interface IChapters {
 export interface IChapterList {
   title: string;
   chapterId: string;
+}
+export interface IContent {
+  msg: string;
+  code: number;
+  count: number;
+  data: [];
 }

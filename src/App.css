@@ -1,25 +1,15 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .section {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   gap: 10px;
   width: 100%;
@@ -42,16 +32,19 @@
   overflow-y: scroll;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .chapter__wrapper::-webkit-scrollbar {
   display: none;
 }
 
 .chapter__wrapper {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .no__wrapper {
@@ -63,12 +56,10 @@
     height: 80vh;
   }
 }
-
 @media all and (max-device-width: 600px) {
   .chapter__wrapper {
     left: 10%;
     width: 80%;
     height: 90vh;
   }
-}
-/*# sourceMappingURL=App.css.map */
+}/*# sourceMappingURL=App.css.map */

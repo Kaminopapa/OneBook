@@ -5,6 +5,7 @@ import IBook, {
   Ibooks,
   IChaptersData,
   IChapterList,
+  IContent,
 } from "../interfaces/IBook";
 
 class BooksApi {
@@ -30,6 +31,13 @@ class BooksApi {
       .get<IChaptersData>(`fictionChapter/search/${id}`)
       .then((res) => {
         return res.data.data;
+      });
+  }
+  async getContent(chapterId: string) {
+    return await this.http
+      .get<IContent>(`fictionContent/search/${chapterId}`)
+      .then((res) => {
+        return res.data;
       });
   }
 }

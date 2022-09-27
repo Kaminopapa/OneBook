@@ -1,0 +1,154 @@
+.hello {
+  background-color: rgba(0, 0, 0, 0.897);
+  color: white;
+  display: flex;
+  align-items: center;
+  .yaya {
+    display: none;
+  }
+  .bye {
+    display: none;
+  }
+  .introduction {
+    width: 50rem;
+    text-align: center;
+    white-space: wrap;
+  }
+  .section__one {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    position: absolute;
+    background-color: black;
+    .Card {
+      white-space: nowrap;
+      display: inline-block;
+      .imageContainer {
+        width: 320px;
+        height: 40vh;
+        overflow: hidden;
+        img {
+          width: 320px;
+          height: 40vh;
+          object-fit: cover;
+        }
+      }
+      .detail {
+        color: white;
+        height: 600px;
+
+        text-align: left;
+
+        opacity: 0;
+        white-space: pre-wrap;
+
+        h3 {
+          font-size: 20px;
+          padding: 10px;
+          letter-spacing: 5px;
+        }
+        p {
+          max-width: 300px;
+          padding: 10px;
+          overflow: hidden;
+          /*文本不会换行*/
+          white-space: nowrap;
+          /*当文本溢出包含元素时，以省略号表示超出的文本*/
+          text-overflow: ellipsis;
+          color: var(--fiction-color);
+        }
+        h4 {
+          display: none;
+        }
+      }
+    }
+    .Card:hover {
+      .imageContainer {
+        transform: translateY(-10vh) scale(0.9);
+        transition: all 0.6s;
+      }
+      .detail {
+        transform: translateY(-12vh);
+        opacity: 1;
+        transition: 0.6s;
+      }
+    }
+  }
+}
+
+@media all and (max-device-width: 1367px) {
+  .hello {
+    margin: 0;
+    width: 100%;
+    height: auto;
+    .introduction {
+      display: none;
+    }
+    .yaya {
+      background-color: black;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      .Card {
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+        flex: 0 1 300px;
+
+        .imageContainer {
+          padding-left: 30%;
+
+          width: 120px;
+          height: 20vh;
+          img {
+            width: 150px;
+            height: 20vh;
+            box-shadow: 13px 0.3px 5px #e0cfcff3;
+            transform: rotateY(28deg);
+          }
+        }
+        .detail {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding-left: 50px;
+          padding-top: 10px;
+
+          h3 {
+            font-size: 20px;
+          }
+          p,
+          h4 {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-device-width: 600px) {
+  .hello {
+    .yaya {
+      .Card {
+        flex: 1 0 100px;
+        font-size: 10px;
+        .imageContainer {
+          padding: 0;
+        }
+        .detail {
+          padding-left: 0px;
+          height: 3rem;
+          h3 {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}

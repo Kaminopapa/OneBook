@@ -1,0 +1,56 @@
+@mixin jumpingSquare($value: absolute) {
+  width: 125px;
+  height: 100px;
+  position: $value;
+  top: 50%;
+  perspective: 200px;
+  &::before,
+  &::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    position: absolute;
+    animation: jumping 1s ease infinite;
+  }
+  &::before {
+    left: 0;
+  }
+  &::after {
+    right: 0;
+    animation-delay: 0.2s;
+  }
+}
+@keyframes jumping {
+  0% {
+    transform: scale(1) translateY(0) rotateX(0);
+    box-shadow: 0 0 0 transparent;
+  }
+  100% {
+    background-color: #fff;
+    transform: scale(1.2) translateY(-55px) rotateX(45deg);
+    box-shadow: 0 50px 100px #fff;
+  }
+}
+.Load__Recomended {
+  background-color: black;
+  width: 100%;
+  height: 55vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .loader {
+    @include jumpingSquare(inherit);
+  }
+}
+
+.load__container {
+  background-color: rgb(29, 27, 27);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .loader {
+    @include jumpingSquare(absolute);
+  }
+}

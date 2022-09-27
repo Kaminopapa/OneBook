@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from "react";
-import Home from "./components/Home";
-import Search from "./components/Search";
+import React, { useEffect, useState, useContext } from "react";
+import Home from "./components/home/Home";
+import Search from "./components/search/Search";
 import "./App.css";
-import Recomended from "./components/Recomended";
+import Recomended from "./components/recomended/Recomended";
 import BookApi from "./services/BookApi";
-import IBook, { Ibooks, IChapters } from "./interfaces/IBook";
-import BooksResult from "./components/BooksResult";
-
+import { Ibooks } from "./interfaces/IBook";
+import BooksResult from "./components/bookResult/BooksResult";
+import { BookCtx } from "./store/BookProvider";
 function App() {
-  const [RecomendedFictions, setRecomendedFictions] = useState<IBook[]>([]);
-  const [chapter, setChapter] = useState<IChapters>();
   //input from Search.tsx
-  const [userInput, setUserInput] = useState("");
+  const ctx = useContext(BookCtx);
   const [bookData, setbookData] = useState<Ibooks>({
     isLoading: false,
     msg: "",
@@ -19,20 +17,20 @@ function App() {
     count: 0,
     data: [],
   });
-
-  const handleInput = (input: string) => {
-    setUserInput(input);
-  };
-
+  const [search, setSearch] = useState<Ibooks>({
+    isLoading: false,
+    msg: "",
+    code: 0,
+    count: 0,
+    data: [],
+  });
   useEffect(() => {
     async function fetchData() {
-      setbookData({
+      setbookData((state) => ({
+        ...state,
         isLoading: true,
         msg: "Fetching data",
-        code: 0,
-        count: 0,
-        data: [],
-      });
+      }));
       const api = await BookApi.getFictions();
       setbookData({
         isLoading: false,
@@ -41,23 +39,31 @@ function App() {
         data: api.data,
         count: api.count,
       });
-      setRecomendedFictions(api.data);
     }
     fetchData();
+    return;
   }, [setbookData]);
-
-  const getChapter = (a: IChapters) => {
-    setChapter(a);
-  };
-
+  useEffect(() => {
+    async function fetchSearchResult() {
+      setSearch((state) => ({ ...state, isLoading: true }));
+      const api = await BookApi.searchFictions(ctx.name);
+      setSearch({
+        isLoading: false,
+        msg: api.msg,
+        code: api.count,
+        data: api.data,
+        count: api.count,
+      });
+    }
+    fetchSearchResult();
+  }, [ctx.name]);
   return (
-    <div id="/">
+    <>
       <Home />
-      <Recomended items={RecomendedFictions} dataStatus={bookData} />
-      <Search onHandleInput={handleInput} />
-
-      <BooksResult userInput={userInput} />
-    </div>
+      <Recomended dataStatus={bookData} />
+      <Search />
+      <BooksResult data={search} />
+    </>
   );
 }
 

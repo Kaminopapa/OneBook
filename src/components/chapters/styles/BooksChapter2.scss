@@ -1,0 +1,116 @@
+.fiction__chapter__header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px 20px 0 0;
+  background-color: rgb(29, 27, 27);
+  position: fixed;
+  top: 2%;
+  width: 50%;
+  height: 40%;
+  flex: 1 1 200px;
+
+  overflow-y: scroll;
+
+  .fiction__chapter__cover {
+    img {
+      height: 70%;
+      box-shadow: 13px 0.3px 5px #e0cfcff3;
+      transform: rotateY(28deg);
+    }
+  }
+  .fiction__chapter__body {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: auto;
+    width: 100%;
+
+    h3,
+    h4,
+    p {
+      padding: 5px;
+    }
+    h3,
+    h4 {
+      letter-spacing: 10px;
+    }
+    p {
+      width: 100%;
+      text-align: left;
+      color: var(--fiction-color);
+    }
+  }
+}
+ul {
+  list-style: none;
+  background-color: rgb(193, 185, 185);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 10px;
+  width: 50%;
+  max-height: 55vh;
+  border-radius: 0px 0px 20px 20px;
+  position: fixed;
+  top: 42%;
+  overflow-y: scroll;
+
+  li {
+    width: auto;
+    margin: 10px;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+      background-color: lightgray;
+      border-radius: 20px;
+      padding: 10px;
+      color: white;
+    }
+  }
+}
+.close {
+  position: fixed;
+  top: 3%;
+  right: 26%;
+  .icon {
+    color: white;
+    font-size: 2rem;
+    transition: all 1s;
+    &:hover {
+      transform: rotate(360deg);
+      color: lightcoral;
+    }
+  }
+}
+
+@media all and (max-device-width: 600px) {
+  .fiction__chapter__header {
+    width: 90%;
+    text-overflow: ellipsis;
+    .fiction__chapter__cover {
+      padding-top: 10px;
+      img {
+        height: 200px;
+      }
+    }
+    .fiction__chapter__body {
+      font-size: 10px;
+    }
+  }
+  ul {
+    width: 90%;
+    gap: 10px;
+    li {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .close {
+    right: 7%;
+  }
+}
