@@ -26,6 +26,7 @@ function Search() {
           value={result}
           type="text"
           alt="Search Bar"
+          placeholder="按主题搜索"
           onChange={(e) => setResult(e.target.value)}
         />
 
