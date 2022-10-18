@@ -1,0 +1,21 @@
+.hello {
+  background-color: rgba(0, 0, 0, 0.897);
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.introduction {
+  width: 50rem;
+  text-align: center;
+  white-space: wrap;
+}
+@media all and (max-device-width: 1367px) {
+  .hello {
+    margin: 0;
+    width: 100%;
+    height: auto;
+  }
+  .introduction {
+    display: none;
+  }
+}

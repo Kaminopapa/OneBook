@@ -9,6 +9,7 @@ import { BookCtx } from "../../store/BookProvider";
 import NoBooks from "../UI/NoBooks/NoBooks";
 import Modal from "../UI/ChapterWrapper/ChapterWrapper";
 import Content from "../chapters/chapter-contents/Contents";
+import GridWrapper from "../UI/GridBooks/GridBooks";
 interface resultProps {
   data: Ibooks;
 }
@@ -58,20 +59,18 @@ const BooksResult = ({ data }: resultProps) => {
 
   const ResultRender = () => {
     return (
-      <div className="section section__two" id="asd">
-        <div className="card__list">
-          {searchResult.map((item) => (
-            <EachBook
-              key={item.fictionId}
-              item={item}
-              card={"result__card"}
-              imageContainer={"result__cover"}
-              detail={"result__detail"}
-              handleShow={handleShow}
-            />
-          ))}
-        </div>
-      </div>
+      <GridWrapper>
+        {searchResult.map((item) => (
+          <EachBook
+            key={item.fictionId}
+            item={item}
+            card={"result__card"}
+            imageContainer={"result__cover"}
+            detail={"result__detail"}
+            handleShow={handleShow}
+          />
+        ))}
+      </GridWrapper>
     );
   };
   return (

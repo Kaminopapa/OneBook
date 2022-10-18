@@ -10,8 +10,10 @@ interface BooksChaptersProps {
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const BooksChapters = (props: BooksChaptersProps) => {
+  //TODO: chapter should be in reverse order
   const chapterList: IChapterList[] = props.chapter.chapterList;
   const chapter = props.chapter;
+
   const ctx = useContext(BookCtx);
 
   const clickForContent = (id: string) => {

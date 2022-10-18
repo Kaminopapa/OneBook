@@ -1,0 +1,24 @@
+.section__two {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+}
+.card__list {
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  flex: 1 1;
+}
+@media all and (max-device-width: 1367px) {
+  .section__two {
+    height: auto;
+  }
+}
+@media all and (max-device-width: 600px) {
+  .card__list {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+}

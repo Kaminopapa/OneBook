@@ -95,7 +95,7 @@ ul li:hover {
     height: 200px;
   }
   .fiction__chapter__header .fiction__chapter__body {
-    font-size: 10px;
+    font-size: 0.7em;
   }
   ul {
     width: 90%;
@@ -105,6 +105,7 @@ ul li:hover {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 0.8em;
   }
   .close {
     right: 7%;

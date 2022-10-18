@@ -3,6 +3,7 @@ import IBook from "../../interfaces/IBook";
 import EachBook from "../UI/EachBook/EachBook";
 import HorizontalScroll from "react-scroll-horizontal";
 import { BsSearch } from "react-icons/bs";
+import HoriWrapper from "../UI/HorizontalWrapper/HorizontalWrapper";
 interface RecomentProps {
   data: IBook[];
   matches: Boolean;
@@ -23,17 +24,7 @@ const RecomendedList = (props: RecomentProps) => {
   };
   const newData: IBook[] = props.data.concat(myFavorite);
   return (
-    <div className="hello">
-      <div className="introduction">
-        <h2>滚动鼠标查看更多</h2>
-        <p>Or</p>
-        <button>
-          <a href="#search">
-            <BsSearch color="yellow" size={"3em"} style={{ margin: "10px" }} />
-          </a>
-        </button>
-        <h2>你感兴趣的</h2>
-      </div>
+    <HoriWrapper>
       {/* 如果宽度小于1367px 不会有横向scroll */}
       <HorizontalScroll
         reverseScroll={true}
@@ -63,7 +54,7 @@ const RecomendedList = (props: RecomentProps) => {
           />
         ))}
       </div>
-    </div>
+    </HoriWrapper>
   );
 };
 
