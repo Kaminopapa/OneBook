@@ -38,7 +38,6 @@ const BooksResult = ({ data }: resultProps) => {
     async function fetchChapterData() {
       setChapters((state) => ({ ...state, isLoading: true }));
       const api = await BookApi.getChapters(ctx.id);
-      //! 有时候会返沪null
       setChapters({
         fictionId: api.fictionId,
         title: api.title,

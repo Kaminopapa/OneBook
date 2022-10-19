@@ -1,8 +1,11 @@
 import React, { useContext, useState } from "react";
 import { IChapterList, IChapters } from "../../interfaces/IBook";
 import { MdClose } from "react-icons/md";
+import { AiOutlineStar } from "react-icons/ai";
 import "./styles/BooksChapter2.css";
 import { BookCtx } from "../../store/BookProvider";
+import { add } from "../../store/collection";
+import { useAddDispatch } from "../../store";
 
 interface BooksChaptersProps {
   chapter: IChapters;
@@ -14,13 +17,24 @@ const BooksChapters = (props: BooksChaptersProps) => {
   const chapterList: IChapterList[] = props.chapter.chapterList;
   const chapter = props.chapter;
 
+  const dispatch = useAddDispatch();
   const ctx = useContext(BookCtx);
 
   const clickForContent = (id: string) => {
     ctx.onSetContentId(id);
     props.setShow(true);
   };
-
+  const handleCollect = () => {
+    dispatch(
+      add({
+        id: chapter.fictionId,
+        title: chapter.title,
+        name: chapter.author,
+        cover: chapter.cover,
+        added: true,
+      })
+    );
+  };
   return (
     <>
       <div className="fiction__chapter__header">
@@ -41,10 +55,14 @@ const BooksChapters = (props: BooksChaptersProps) => {
           </li>
         ))}
       </ul>
-
-      <button onClick={() => props.onHandleClose()} className="close">
-        <MdClose className="icon" />
-      </button>
+      <div className="controls">
+        <button onClick={() => props.onHandleClose()}>
+          <MdClose className="close" />
+        </button>
+        <button onClick={handleCollect}>
+          <AiOutlineStar className="collect" />
+        </button>
+      </div>
     </>
   );
 };

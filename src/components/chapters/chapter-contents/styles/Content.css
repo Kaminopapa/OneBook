@@ -76,8 +76,9 @@ div.content .control button .closeContent:hover {
   .content.light .control,
 .content.dark .control {
     flex-flow: row;
-    top: 94%;
+    top: 94.7%;
     right: 30%;
+    height: 5%;
   }
   .content.light .control button,
 .content.dark .control button {

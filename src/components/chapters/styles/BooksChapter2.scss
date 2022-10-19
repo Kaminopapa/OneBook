@@ -71,21 +71,45 @@ ul {
     }
   }
 }
-.close {
+.controls {
+  display: flex;
+  flex-flow: column;
   position: fixed;
+  right: 22%;
   top: 3%;
-  right: 26%;
-  .icon {
-    color: white;
-    font-size: 2rem;
-    transition: all 1s;
-    &:hover {
-      transform: rotate(360deg);
-      color: lightcoral;
+  background-color: rgba(247, 245, 245, 0.27);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  padding: 5px;
+  button {
+    .close,
+    .collect {
+      font-size: 2rem;
+      color: rgb(120, 160, 201);
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    .collect {
+      color: lightsalmon;
+      transition: 1s;
+      &:hover {
+        transform: rotate(180deg) scale(1.1);
+      }
+    }
+    .close {
+      transition: 1s;
+      &:hover {
+        transform: rotate(180deg) scale(1.1);
+      }
     }
   }
 }
-
+@media all and (max-device-width: 1367px) {
+  .controls {
+    right: 21%;
+  }
+}
 @media all and (max-device-width: 600px) {
   .fiction__chapter__header {
     width: 90%;
@@ -110,7 +134,7 @@ ul {
       font-size: 0.8em;
     }
   }
-  .close {
-    right: 7%;
+  .controls {
+    right: 6%;
   }
 }
