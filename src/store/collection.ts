@@ -1,15 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { stat } from "fs";
 import { IChapters } from "../interfaces/IBook";
-interface BookState {
-  id: string;
-  title: string;
-  name: string;
-  cover: string;
-  added: boolean;
-}
+import IBook from "../interfaces/IBook";
+
 interface initial {
-  items: BookState[];
+  items: IBook[];
   count: number;
 }
 const initialState: initial = {
@@ -20,33 +15,41 @@ const collectionSlice = createSlice({
   name: "collection",
   initialState: initialState,
   reducers: {
-    add(state, action: PayloadAction<BookState>) {
+    add(state, action: PayloadAction<IBook>) {
       const newItem = action.payload;
-      let exist = state.items.find((item) => item.id === newItem.id);
+      let exist = state.items.find(
+        (item) => item.fictionId === newItem.fictionId
+      );
       if (!exist) {
         state.items.push({
-          id: newItem.id,
+          fictionId: newItem.fictionId,
           title: newItem.title,
-          name: newItem.name,
+          author: newItem.author,
           cover: newItem.cover,
-          added: newItem.added,
+          descs: newItem.descs,
+          fictionType: newItem.fictionType,
+          updateTime: newItem.updateTime,
+          idLoading: newItem.idLoading,
         });
         state.count++;
       }
     },
     remove(state, action: PayloadAction<string>) {
       const id = action.payload;
-      state.items = state.items.filter((item) => item.id !== id);
+      state.items = state.items.filter((item) => item.fictionId !== id);
       state.count--;
     },
-    getCollections(state, action: PayloadAction<BookState>) {
+    getCollections(state, action: PayloadAction<IBook>) {
       const newItem = action.payload;
       state.items.push({
-        id: newItem.id,
+        fictionId: newItem.fictionId,
         title: newItem.title,
-        name: newItem.name,
+        author: newItem.author,
         cover: newItem.cover,
-        added: newItem.added,
+        descs: newItem.descs,
+        fictionType: newItem.fictionType,
+        updateTime: newItem.updateTime,
+        idLoading: newItem.idLoading,
       });
       state.count = state.items.length || 0;
     },

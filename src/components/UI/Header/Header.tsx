@@ -4,6 +4,7 @@ import classes from "./styles/header.module.css";
 import { AiOutlineStar } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
 import { remove } from "../../../store/collection";
+import EachBook from "../EachBook";
 
 const Header = () => {
   const dispatch = useAddDispatch();
@@ -14,7 +15,7 @@ const Header = () => {
   const handleDelete = (id: string) => {
     dispatch(remove(id));
   };
-  const handleChapter = (id: string) => {};
+
   return (
     <>
       <header className={classes.header}>
@@ -30,15 +31,17 @@ const Header = () => {
       {showCollection && selectedState.items.length != 0 && (
         <div className={classes.collections}>
           {selectedState.items.map((item) => (
-            <div
-              className={classes.collections_list}
-              onClick={() => handleChapter(item.id)}
-            >
-              <img src={item.cover} alt={item.name} />
-
+            <div className={classes.collections__list}>
+              <EachBook
+                key={item.fictionId}
+                item={item}
+                card={classes.collected__card}
+                detail={classes.collected__detail}
+                imageContainer={classes.collected__cover}
+              />
               <MdClose
                 className={classes.close}
-                onClick={() => handleDelete(item.id)}
+                onClick={() => handleDelete(item.fictionId)}
               />
             </div>
           ))}

@@ -25,11 +25,14 @@ const BooksChapters = () => {
   const handleCollect = () => {
     dispatch(
       add({
-        id: chapterState.fictionId,
+        fictionId: chapterState.fictionId,
         title: chapterState.title,
-        name: chapterState.author,
+        author: chapterState.author,
         cover: chapterState.cover,
-        added: true,
+        descs: chapterState.descs,
+        fictionType: chapterState.fictionType,
+        updateTime: chapterState.updateTime,
+        idLoading: chapterState.isLoading,
       })
     );
   };

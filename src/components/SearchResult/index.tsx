@@ -57,7 +57,7 @@ const index = () => {
   return (
     <>
       {loadingState.loadBook && (
-        <Loading show={true} styleClass={"Load__Recomended"} />
+        <Loading show={true} styleClass={"Load__Recomended section__two"} />
       )}
       {!loadingState.loadBook && !currentTableData && (
         <NoBooks

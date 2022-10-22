@@ -38,6 +38,11 @@ function App() {
   });
   console.log(nameState);
   //Todo:
+  //::search result 加载动画位置不对
+
+  //Todo:未来要实现的功能
+  //::记录最后一次阅读的地方
+  //::点击空白处移除收藏功能
 
   return (
     <>
