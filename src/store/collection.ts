@@ -22,7 +22,7 @@ const collectionSlice = createSlice({
   reducers: {
     add(state, action: PayloadAction<BookState>) {
       const newItem = action.payload;
-      const exist = state.items.find((item) => item.id === newItem.id);
+      let exist = state.items.find((item) => item.id === newItem.id);
       if (!exist) {
         state.items.push({
           id: newItem.id,
@@ -39,7 +39,18 @@ const collectionSlice = createSlice({
       state.items = state.items.filter((item) => item.id !== id);
       state.count--;
     },
+    getCollections(state, action: PayloadAction<BookState>) {
+      const newItem = action.payload;
+      state.items.push({
+        id: newItem.id,
+        title: newItem.title,
+        name: newItem.name,
+        cover: newItem.cover,
+        added: newItem.added,
+      });
+      state.count = state.items.length || 0;
+    },
   },
 });
-export const { add, remove } = collectionSlice.actions;
+export const { add, remove, getCollections } = collectionSlice.actions;
 export default collectionSlice.reducer;

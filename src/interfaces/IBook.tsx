@@ -4,7 +4,7 @@ export interface Ibooks {
   code: number;
   count: number;
   isLoading: boolean;
-  data: [];
+  data: IBook[];
 }
 
 export default interface IBook {

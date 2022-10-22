@@ -1,5 +1,8 @@
-import React, { useContext, useState } from "react";
-import { BookCtx } from "../../../store/BookProvider";
+import React from "react";
+
+import { toggle } from "../../../store/display";
+import { useAddDispatch } from "../../../store";
+import { getId } from "../../../store/chapters";
 import IBook from "../../../interfaces/IBook";
 
 interface EachBookProps {
@@ -7,12 +10,11 @@ interface EachBookProps {
   card: string;
   detail: string;
   imageContainer: string;
-  handleShow: () => void;
 }
 
 const EachBook = (props: EachBookProps) => {
-  const ctx = useContext(BookCtx);
   const item = props.item;
+  const dispatch = useAddDispatch();
 
   function resizeDescription(name: string): string {
     if (name) {
@@ -36,10 +38,9 @@ const EachBook = (props: EachBookProps) => {
   }
 
   const clickForChapter = () => {
-    ctx.onSetId(item.fictionId);
-    console.log(ctx.id);
+    dispatch(getId(item.fictionId));
 
-    props.handleShow();
+    dispatch(toggle(true));
   };
 
   return (

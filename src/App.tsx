@@ -1,77 +1,52 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect } from "react";
 import Home from "./components/home/Home";
-import Search from "./components/search/Search";
 import "./App.css";
-
-import BookApi from "./services/BookApi";
-import { Ibooks } from "./interfaces/IBook";
-
-import { BookCtx } from "./store/BookProvider";
-import BookList from "./components/UI/BookList/BookList";
 import Header from "./components/UI/Header/Header";
+import {
+  fetchBooksData,
+  fetchSearchResult,
+  getLocalCollection,
+} from "./store/books-actions";
+import { useAddDispatch, RootState, useAppSelector } from "./store/";
+import Search from "./components/search/Search";
+import Populate from "./components/Recomended";
+import SearchResult from "./components/SearchResult";
+
 function App() {
-  //input from Search.tsx
-  const ctx = useContext(BookCtx);
-  const [bookData, setbookData] = useState<Ibooks>({
-    isLoading: false,
-    msg: "",
-    code: 0,
-    count: 0,
-    data: [],
-  });
-  const [search, setSearch] = useState<Ibooks>({
-    isLoading: false,
-    msg: "",
-    code: 0,
-    count: 0,
-    data: [],
-  });
+  const name = (s: RootState) => s.books.name;
+  const searchName = useAppSelector(name);
+  const dispatch = useAddDispatch();
+  const bookname = (s: RootState) => s.books.name;
+  const nameState = useAppSelector(bookname);
+  const collections = (s: RootState) => s.collection;
+  const collectionsState = useAppSelector(collections);
+
+  //getBooksData
   useEffect(() => {
-    async function fetchData() {
-      setbookData((state) => ({
-        ...state,
-        isLoading: true,
-        msg: "Fetching data",
-      }));
-      const api = await BookApi.getFictions();
-      if (api) {
-        setbookData({
-          isLoading: false,
-          msg: api.msg,
-          code: api.count,
-          data: api.data,
-          count: api.count,
-        });
-      }
-    }
-    fetchData();
-    return;
-  }, [setbookData]);
+    dispatch(fetchBooksData());
+    dispatch(getLocalCollection());
+  }, []);
+
   useEffect(() => {
-    async function fetchSearchResult() {
-      setSearch((state) => ({ ...state, isLoading: true }));
-      const api = await BookApi.searchFictions(ctx.name);
-      if (api) {
-        setSearch({
-          isLoading: false,
-          msg: api.msg,
-          code: api.count,
-          data: api.data,
-          count: api.count,
-        });
-      }
+    if (nameState !== "") {
+      dispatch(fetchSearchResult(nameState));
     }
-    fetchSearchResult();
-  }, [ctx.name]);
+  }, [searchName]);
+
+  useEffect(() => {
+    localStorage.setItem("collections", JSON.stringify(collectionsState.items));
+  });
+  console.log(nameState);
+  //Todo:
 
   return (
     <>
       <Header />
       <Home />
-      <BookList data={bookData} />
+      <Populate />
 
       <Search />
-      <BookList data={search} where={"searchResult"} />
+      <SearchResult />
     </>
   );
 }

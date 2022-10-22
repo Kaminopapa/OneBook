@@ -75,7 +75,7 @@ ul {
   display: flex;
   flex-flow: column;
   position: fixed;
-  right: 22%;
+  left: 22%;
   top: 3%;
   background-color: rgba(247, 245, 245, 0.27);
   border-radius: 20px;
@@ -97,6 +97,7 @@ ul {
         transform: rotate(180deg) scale(1.1);
       }
     }
+
     .close {
       transition: 1s;
       &:hover {
@@ -107,12 +108,13 @@ ul {
 }
 @media all and (max-device-width: 1367px) {
   .controls {
-    right: 21%;
+    left: 21%;
   }
 }
 @media all and (max-device-width: 600px) {
   .fiction__chapter__header {
     width: 90%;
+
     text-overflow: ellipsis;
     .fiction__chapter__cover {
       padding-top: 10px;
@@ -126,6 +128,7 @@ ul {
   }
   ul {
     width: 90%;
+    max-height: 50vh;
     gap: 10px;
     li {
       white-space: nowrap;
@@ -135,6 +138,8 @@ ul {
     }
   }
   .controls {
-    right: 6%;
+    flex-direction: row;
+    top: 93%;
+    left: 40%;
   }
 }

@@ -1,36 +1,34 @@
-import React, { useContext, useState } from "react";
-import { IChapterList, IChapters } from "../../interfaces/IBook";
+import React, { useState } from "react";
+
 import { MdClose } from "react-icons/md";
 import { AiOutlineStar } from "react-icons/ai";
 import "./styles/BooksChapter2.css";
-import { BookCtx } from "../../store/BookProvider";
+
 import { add } from "../../store/collection";
-import { useAddDispatch } from "../../store";
+import { useAddDispatch, useAppSelector, RootState } from "../../store";
+import { toggleContent, toggle } from "../../store/display";
+import { getContentId } from "../../store/chapters";
 
-interface BooksChaptersProps {
-  chapter: IChapters;
-  onHandleClose: () => void;
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
-}
-const BooksChapters = (props: BooksChaptersProps) => {
+const BooksChapters = () => {
   //TODO: chapter should be in reverse order
-  const chapterList: IChapterList[] = props.chapter.chapterList;
-  const chapter = props.chapter;
-
+  const [isCollected, setIsCollected] = useState(false);
+  const chapters = (s: RootState) => s.chapter.chapters;
+  const chapterState = useAppSelector(chapters);
   const dispatch = useAddDispatch();
-  const ctx = useContext(BookCtx);
-
   const clickForContent = (id: string) => {
-    ctx.onSetContentId(id);
-    props.setShow(true);
+    dispatch(getContentId(id));
+    dispatch(toggleContent(true));
+  };
+  const handleClose = () => {
+    dispatch(toggle(false));
   };
   const handleCollect = () => {
     dispatch(
       add({
-        id: chapter.fictionId,
-        title: chapter.title,
-        name: chapter.author,
-        cover: chapter.cover,
+        id: chapterState.fictionId,
+        title: chapterState.title,
+        name: chapterState.author,
+        cover: chapterState.cover,
         added: true,
       })
     );
@@ -39,24 +37,24 @@ const BooksChapters = (props: BooksChaptersProps) => {
     <>
       <div className="fiction__chapter__header">
         <div className="fiction__chapter__cover">
-          <img src={chapter.cover} alt={`${chapter.cover} cover} `} />
+          <img src={chapterState.cover} alt={`${chapterState.cover} cover} `} />
         </div>
         <div className="fiction__chapter__body">
-          <h3>《{chapter.title}》</h3>
-          <h4>{chapter.author}</h4>
-          <p> {chapter.descs} </p>
+          <h3>《{chapterState.title}》</h3>
+          <h4>{chapterState.author}</h4>
+          <p> {chapterState.descs} </p>
         </div>
       </div>
 
       <ul>
-        {chapterList.map((a) => (
+        {chapterState.chapterList.map((a) => (
           <li key={a.chapterId} onClick={() => clickForContent(a.chapterId)}>
             {a.title}
           </li>
         ))}
       </ul>
       <div className="controls">
-        <button onClick={() => props.onHandleClose()}>
+        <button onClick={handleClose}>
           <MdClose className="close" />
         </button>
         <button onClick={handleCollect}>

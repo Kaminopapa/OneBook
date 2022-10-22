@@ -22,7 +22,7 @@ class BooksApi {
   }
   async searchFictions(type: string) {
     const response = await this.http.get<Ibooks>(
-      `fiction/search/fictionType/${type}`
+      `fiction/search/fictionType/${type}/1/30`
     );
     return response.data;
   }

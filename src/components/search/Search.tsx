@@ -1,20 +1,20 @@
-import React, { useState, useContext, useEffect } from "react";
-import { BookCtx } from "../../store/BookProvider";
+import React, { useRef } from "react";
+import { useAddDispatch } from "../../store";
+import { getName } from "../../store/books";
 import { BsSearch } from "react-icons/bs";
 import "./styles/Search.css";
 
 function Search() {
-  const [result, setResult] = useState("");
-  const inputCtx = useContext(BookCtx);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const dispatch = useAddDispatch();
 
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
-    if (result === "") {
-      alert("Cannot enter empty value");
-      return;
-    }
-    inputCtx.onSetName(result);
-    setResult("");
+    if (!inputRef.current) return;
+    const value = inputRef.current.value;
+    dispatch(getName(value));
+    inputRef.current.value = "";
+
     window.scrollTo({ top: 3000, behavior: "smooth" });
   };
 
@@ -23,11 +23,10 @@ function Search() {
       <div className="form__background"></div>
       <form onSubmit={submitForm} id="search">
         <input
-          value={result}
+          ref={inputRef}
           type="text"
           alt="Search Bar"
           placeholder="按主题搜索"
-          onChange={(e) => setResult(e.target.value)}
         />
 
         <button>

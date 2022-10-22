@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { RootState, useAppSelector, useAddDispatch } from "../../../store";
 import classes from "./styles/header.module.css";
 import { AiOutlineStar } from "react-icons/ai";

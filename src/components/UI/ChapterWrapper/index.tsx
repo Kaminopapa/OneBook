@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDom from "react-dom";
 import "./styles/ChapterWrapper.css";
+
 interface wrapperProps {
   children?: React.ReactNode;
   show: Boolean;
-  onClose: () => void;
 }
 
 const ChapterWrapper = (props: wrapperProps) => {
@@ -20,9 +20,7 @@ const Modal = (props: wrapperProps) => {
   return (
     <>
       {ReactDom.createPortal(
-        <ChapterWrapper show={props.show} onClose={props.onClose}>
-          {props.children}
-        </ChapterWrapper>,
+        <ChapterWrapper show={props.show}>{props.children}</ChapterWrapper>,
         portalElement
       )}
     </>
