@@ -2,7 +2,7 @@ import React from "react";
 
 import { toggle } from "../../../store/display";
 import { useAddDispatch } from "../../../store";
-import { getId } from "../../../store/chapters";
+
 import IBook from "../../../interfaces/IBook";
 import { fetchChapterData } from "../../../store/books-actions";
 

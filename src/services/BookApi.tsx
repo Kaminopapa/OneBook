@@ -1,12 +1,7 @@
 //get API by using axio
 //API sources: LRY_API
 import axios from "axios";
-import IBook, {
-  Ibooks,
-  IChaptersData,
-  IChapterList,
-  IContent,
-} from "../interfaces/IBook";
+import { Ibooks, IChaptersData, IContent } from "../interfaces/IBook";
 
 class BooksApi {
   http = axios.create({

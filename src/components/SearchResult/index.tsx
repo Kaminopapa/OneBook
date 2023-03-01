@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 import classes from "./styles/styles.module.css";
 import GridWrapper from "../UI/GridBooks/GridBooks";
 import EachBook from "../UI/EachBook";
-import { RootState, useAppSelector, useAddDispatch } from "../../store";
+import { RootState, useAppSelector } from "../../store";
 
 import Pagination from "../UI/pagination/Pagination";
 import Loading from "../UI/Loading/FetchingData";

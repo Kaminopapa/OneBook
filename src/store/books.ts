@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { stat } from "fs";
-import IBook, { Ibooks } from "../interfaces/IBook";
+
+import IBook from "../interfaces/IBook";
 interface initial {
   books: IBook[];
   result: IBook[];

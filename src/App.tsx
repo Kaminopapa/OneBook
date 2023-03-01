@@ -2,10 +2,7 @@ import React, { useEffect } from "react";
 import Home from "./components/home/Home";
 import "./App.css";
 import Header from "./components/UI/Header/Header";
-import {
-  fetchBooksData,
-  fetchSearchResult,
-} from "./store/books-actions";
+import { fetchSearchResult } from "./store/books-actions";
 import { useAddDispatch, RootState, useAppSelector } from "./store/";
 import Search from "./components/search/Search";
 import Populate from "./components/Recomended";
@@ -17,8 +14,6 @@ function App() {
   const dispatch = useAddDispatch();
   const bookname = (s: RootState) => s.books.name;
   const nameState = useAppSelector(bookname);
-  const collections = (s: RootState) => s.collection;
-  const collectionsState = useAppSelector(collections);
 
   // This has two issues:
   // 1. getBooksData should happen in Populate component

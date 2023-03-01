@@ -1,6 +1,5 @@
 import { IChapters, IContent } from "../interfaces/IBook";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { stat } from "fs";
 
 interface initial {
   id: string;
