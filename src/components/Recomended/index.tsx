@@ -7,7 +7,7 @@ import EachBook from "../UI/EachBook";
 import HorizontalWrapper from "../UI/HorizontalWrapper/HorizontalWrapper";
 import classes from "./styles/styles.module.css";
 import Loading from "../UI/Loading/FetchingData";
-import { fetchChapterData } from "../../store/books-actions";
+import { fetchBooksData } from "../../store/books-actions";
 import Content from "../chapters/chapter-contents/index";
 import NoBooks from "../UI/NoBooks/NoBooks";
 const Populate = () => {
@@ -24,23 +24,31 @@ const Populate = () => {
   const toggle = useAppSelector(display);
   const mediaMatch = window.matchMedia("(max-width:1367px)");
   const [matches, setMatches] = useState(mediaMatch.matches);
+  
+  // DO Not using some functions have already deprecated
+  // useEffect(() => {
+  //   const handler = (e: {
+  //     matches: boolean | ((prevState: boolean) => boolean);
+  //   }) => setMatches(e.matches);
+  //   mediaMatch.addListener(handler);
+  //   return () => mediaMatch.removeListener(handler);
+  // }, []);
+
   useEffect(() => {
-    const handler = (e: {
-      matches: boolean | ((prevState: boolean) => boolean);
-    }) => setMatches(e.matches);
-    mediaMatch.addListener(handler);
-    return () => mediaMatch.removeListener(handler);
-  }, []);
-  useEffect(() => {
-    if (id === "") return;
-    dispatch(fetchChapterData(id));
-  }, [id]);
+    dispatch(fetchBooksData());
+  }, [])
+  
+  // Instead of using useEffect, directly call fetchChapterData when user clicks on book
+  // useEffect(() => {
+  //   if (id === "") return;
+  //   dispatch(fetchChapterData(id));
+  // }, [id]);
+
   const resultRender = (
     <HorizontalWrapper>
       <HorizontalScroll
         reverseScroll={true}
         style={{ height: "40vh" }}
-        className={matches ? `${classes.bye}` : `${classes.section__one}`}
       >
         {bookState &&
           bookState.map((item) => (

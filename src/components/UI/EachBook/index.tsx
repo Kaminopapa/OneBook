@@ -4,6 +4,7 @@ import { toggle } from "../../../store/display";
 import { useAddDispatch } from "../../../store";
 import { getId } from "../../../store/chapters";
 import IBook from "../../../interfaces/IBook";
+import { fetchChapterData } from "../../../store/books-actions";
 
 interface EachBookProps {
   item: IBook;
@@ -38,7 +39,7 @@ const EachBook = (props: EachBookProps) => {
   }
 
   const clickForChapter = () => {
-    dispatch(getId(item.fictionId));
+    dispatch(fetchChapterData(item.fictionId));
 
     dispatch(toggle(true));
   };

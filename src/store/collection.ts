@@ -1,14 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { stat } from "fs";
-import { IChapters } from "../interfaces/IBook";
 import IBook from "../interfaces/IBook";
 
 interface initial {
   items: IBook[];
   count: number;
 }
+
+const getLocalCollection = () => {
+  const localCollections = localStorage.getItem("collections");
+  const items = JSON.parse(localCollections || '[ ]');
+  return items
+ }
+
 const initialState: initial = {
-  items: [],
+  items: getLocalCollection(),
   count: 0,
 };
 const collectionSlice = createSlice({
@@ -21,36 +26,22 @@ const collectionSlice = createSlice({
         (item) => item.fictionId === newItem.fictionId
       );
       if (!exist) {
-        state.items.push({
-          fictionId: newItem.fictionId,
-          title: newItem.title,
-          author: newItem.author,
-          cover: newItem.cover,
-          descs: newItem.descs,
-          fictionType: newItem.fictionType,
-          updateTime: newItem.updateTime,
-          idLoading: newItem.idLoading,
-        });
+        state.items.push(newItem);
+        console.info(state.items)
+        localStorage.setItem("collections", JSON.stringify(state.items));
         state.count++;
       }
     },
     remove(state, action: PayloadAction<string>) {
       const id = action.payload;
       state.items = state.items.filter((item) => item.fictionId !== id);
+      console.info(state.items)
+      localStorage.setItem("collections", JSON.stringify(state.items));
       state.count--;
     },
     getCollections(state, action: PayloadAction<IBook>) {
       const newItem = action.payload;
-      state.items.push({
-        fictionId: newItem.fictionId,
-        title: newItem.title,
-        author: newItem.author,
-        cover: newItem.cover,
-        descs: newItem.descs,
-        fictionType: newItem.fictionType,
-        updateTime: newItem.updateTime,
-        idLoading: newItem.idLoading,
-      });
+      state.items.push(newItem);
       state.count = state.items.length || 0;
     },
   },
