@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import HorizontalScroll from "react-scroll-horizontal";
+
 import { RootState, useAppSelector, useAddDispatch } from "../../store";
 import BooksChapters from "../chapters";
 import Modal from "../UI/ChapterWrapper";
@@ -24,7 +24,7 @@ const Populate = () => {
   const toggle = useAppSelector(display);
   const mediaMatch = window.matchMedia("(max-width:1367px)");
   const [matches, setMatches] = useState(mediaMatch.matches);
-  
+
   // DO Not using some functions have already deprecated
   // useEffect(() => {
   //   const handler = (e: {
@@ -36,8 +36,8 @@ const Populate = () => {
 
   useEffect(() => {
     dispatch(fetchBooksData());
-  }, [])
-  
+  }, []);
+
   // Instead of using useEffect, directly call fetchChapterData when user clicks on book
   // useEffect(() => {
   //   if (id === "") return;
@@ -46,22 +46,7 @@ const Populate = () => {
 
   const resultRender = (
     <HorizontalWrapper>
-      <HorizontalScroll
-        reverseScroll={true}
-        style={{ height: "40vh" }}
-      >
-        {bookState &&
-          bookState.map((item) => (
-            <EachBook
-              key={item.fictionId}
-              item={item}
-              card={classes.Card}
-              imageContainer={classes.imageContainer}
-              detail={classes.detail}
-            />
-          ))}
-      </HorizontalScroll>
-      <div className={matches ? `${classes.yaya}` : `${classes.bye}`}>
+      <div className={matches ? classes.yaya : classes.scrollArea}>
         {bookState &&
           bookState.map((item) => (
             <EachBook

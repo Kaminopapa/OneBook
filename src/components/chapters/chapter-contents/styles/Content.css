@@ -69,13 +69,13 @@ div.content .control button .closeContent:hover {
 
 @media all and (max-device-width: 600px) {
   .content.light,
-.content.dark {
+  .content.dark {
     width: 100%;
     height: 100%;
     border-radius: 0;
   }
   .content.light .control,
-.content.dark .control {
+  .content.dark .control {
     flex-flow: row;
     top: 94.7%;
     left: 30%;
@@ -83,7 +83,7 @@ div.content .control button .closeContent:hover {
     background-color: rgba(26, 24, 24, 0.454);
   }
   .content.light .control button,
-.content.dark .control button {
+  .content.dark .control button {
     margin: 2px;
   }
 }/*# sourceMappingURL=Content.css.map */

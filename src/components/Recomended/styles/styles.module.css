@@ -15,6 +15,12 @@
   white-space: nowrap;
   display: inline-block;
 }
+.scrollArea {
+  display: flex;
+  overflow-x: scroll;
+  height: 40vh;
+  overflow-y: hidden;
+}
 .Card .imageContainer {
   width: 320px;
   height: 40vh;

@@ -3,12 +3,14 @@
   color: white;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
 .introduction {
   width: 50rem;
   text-align: center;
   white-space: wrap;
 }
+
 @media all and (max-device-width: 1367px) {
   .hello {
     margin: 0;

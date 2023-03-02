@@ -2,14 +2,10 @@
 .search__section {
   background-image: url("../../../images/greg-rakozy-oMpAz-DN-9I-unsplash.jpg");
   height: 100vh;
-  -webkit-animation-name: move;
-          animation-name: move;
-  -webkit-animation-duration: 60s;
-          animation-duration: 60s;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
+  animation-name: move;
+  animation-duration: 60s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
   background-size: cover;
 }
 .search__section div.form__background {
@@ -38,13 +34,7 @@
   background-color: rgb(255, 115, 0);
   background-position: 0 0;
   background-image: linear-gradient(90deg, rgba(255, 115, 0, 0.9556197479) 0%, rgb(255, 125, 191) 50%, rgb(56, 224, 244) 100%);
-  -webkit-animation: rotate 5s linear infinite;
-          animation: rotate 5s linear infinite;
-}
-@-webkit-keyframes rotate {
-  100% {
-    transform: rotate(1turn);
-  }
+  animation: rotate 5s linear infinite;
 }
 @keyframes rotate {
   100% {
@@ -61,16 +51,7 @@
   height: calc(100% - 12px);
   background-color: white;
   border-radius: 5px;
-  -webkit-animation: opacityChange 5s linear infinite;
-          animation: opacityChange 5s linear infinite;
-}
-@-webkit-keyframes opacityChange {
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.5;
-  }
+  animation: opacityChange 5s linear infinite;
 }
 @keyframes opacityChange {
   50% {
@@ -97,15 +78,6 @@
   cursor: pointer;
 }
 
-@-webkit-keyframes move {
-  0% {
-    background-position: 0% 0% ；;
-  }
-  100% {
-    background-position: bottom right;
-  }
-}
-
 @keyframes move {
   0% {
     background-position: 0% 0% ；;
@@ -122,8 +94,7 @@
 @media all and (max-device-width: 600px) {
   .search__section {
     background-position: 50%;
-    -webkit-animation: none;
-            animation: none;
+    animation: none;
   }
   .search__section form {
     width: 300px;
